@@ -1,0 +1,7 @@
+treatment_type,code
+endoscopic removal,1
+surgery,2
+chemotherapy,3
+radiotherapy,4
+combinations of therapy,5
+unknown,99

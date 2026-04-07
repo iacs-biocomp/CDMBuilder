@@ -1,0 +1,60 @@
+{
+  "description": "Comprehensive validation rules for the Assessment entity including all categorical values - DuckDB Syntax",
+  "rules": [
+    {
+      "name": "assessment_id_not_null",
+      "description": "Unique identifier for the assessment is mandatory.",
+      "expression": "assessment_id IS NOT NULL"
+    },
+    {
+      "name": "round_id_consistency",
+      "description": "The round_id is required for linking with other screening phases.",
+      "expression": "round_id IS NOT NULL"
+    },
+    {
+      "name": "assessment_invited_catalog",
+      "description": "Validates invitation status: 0=false, 1=true, 99=unknown.",
+      "expression": "assessment_invited::VARCHAR IN ('0', '1', '99')"
+    },
+    {
+      "name": "assessment_attended_catalog",
+      "description": "Validates attendance status: 0=false, 1=true, 99=unknown.",
+      "expression": "assessment_attended::VARCHAR IN ('0', '1', '99')"
+    },
+    {
+      "name": "assessment_method_catalog",
+      "description": "Validates assessment method: 3=Sigmoidoscopy, 4=Colonoscopy, 5=CT-Colonography.",
+      "expression": "assessment_method::VARCHAR IN ('3', '4', '5')"
+    },
+    {
+      "name": "assessment_diagnosis_catalog",
+      "description": "Validates diagnosis codes: 0=No CRC/Adenoma, 1=Small Adenoma, 2=Advanced Adenoma, 3=Cancer, 6=Other, 99=Unknown.",
+      "expression": "assessment_diagnosis::VARCHAR IN ('0', '1', '2', '3', '6', '99')"
+    },
+    {
+      "name": "assessment_complications_catalog",
+      "description": "Validates complications codes (0 to 17) or NULL if not applicable.",
+      "expression": "assessment_complications::VARCHAR IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '99')"
+    },
+    {
+      "name": "assessment_stage_type_catalog",
+      "description": "Validates stage type: 1=TNM, 2=Stage.",
+      "expression": "assessment_phase_stage_type::VARCHAR IN ('1', '2') OR assessment_phase_stage_type IS NULL"
+    },
+    {
+      "name": "attendance_consistency",
+      "description": "Logical check: If attendance is false (0), there should be no assessment date.",
+      "expression": "CASE WHEN assessment_attended::VARCHAR = '0' THEN assessment_date IS NULL ELSE TRUE END"
+    },
+    {
+      "name": "assessment_date_format",
+      "description": "Ensures the date follows the YYYY-MM-DD format if provided.",
+      "expression": "assessment_date IS NULL OR TRY_CAST(assessment_date::VARCHAR AS DATE) IS NOT NULL"
+    },
+    {
+      "name": "cancer_stage_logic",
+      "description": "If a cancer stage is provided, the stage type (TNM or Stage) must be specified.",
+      "expression": "CASE WHEN assessment_phase_cancer_stage IS NOT NULL THEN assessment_phase_stage_type IS NOT NULL ELSE TRUE END"
+    }
+  ]
+}

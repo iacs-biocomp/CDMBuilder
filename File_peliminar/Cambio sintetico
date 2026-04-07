@@ -1,0 +1,100 @@
+
+
+#########################################################
+# PERSON
+#########################################################
+
+Assign (SET) -> de_cause = NULL
+
+Condition (WHERE) -> de_date IS NULL
+
+··················································································
+
+#########################################################
+# SCREENING_ROUND
+#########################################################
+
+Assign (SET) -> screening_previous_attendance = 2
+
+Condition (WHERE) -> screening_round_number = 1
+
+__________________________________________________________
+
+Assign (SET) -> primary_invitation_date = NULL
+
+Condition (WHERE) -> primary_invited != 1
+
+__________________________________________________________
+
+
+Assign (SET) -> primary_test_attended = 2
+
+Condition (WHERE) -> primary_invited = 2
+
+__________________________________________________________
+
+Assign (SET) -> primary_test_attended = 0
+
+Condition (WHERE) -> primary_invited IN (0, 2) AND primary_test_attended = 1
+
+
+#########################################################
+# COLON_PRIMARY
+#########################################################
+
+Assign (SET) -> primary_test_attended = 2
+
+Condition (WHERE) -> primary_invited = 2
+
+_________________________________________________________
+
+Assign (SET) -> primary_invitation_date = NULL
+
+Condition (WHERE) -> primary_invited IN ('0', '2', '99')
+
+_________________________________________________________
+
+Assign (SET) -> primary_test_complications = NULL
+
+Condition (WHERE) -> primary_test_method NOT LIKE '%endoscopy%' AND primary_test_complications IS NOT NULL
+
+··················································································
+
+#########################################################
+# COLON_ASSESSMENT
+#########################################################
+
+Assign (SET) -> assessment_date = NULL
+
+Condition (WHERE) -> assessment_attended = '0'
+
+__________________________________________________________
+
+Assign (SET) -> assessment_phase_cancer_stage = NULL
+
+Condition (WHERE) -> assessment_phase_cancer_stage IS NOT NULL AND assessment_phase_stage_type IS NULL
+
+
+··················································································
+
+#########################################################
+# COLON_TREATMENT
+#########################################################
+
+
+Assign (SET) -> treatment_date = NULL
+
+Condition (WHERE) -> treatment_attended = '0'
+
+
+··················································································
+
+#########################################################
+# COLON_INTERVAL
+#########################################################
+
+Assign (SET) -> interval_cancer_exists = 'false'
+
+Condition (WHERE) -> interval_cancer_exists = 'true' AND interval_cancer_dg_date IS NULL
+
+

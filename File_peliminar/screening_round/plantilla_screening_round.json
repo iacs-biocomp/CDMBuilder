@@ -1,0 +1,65 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "name": "screening_year_check",
+      "description": "Ensures the record belongs strictly to the 2025 screening campaign.",
+      "expression": "screening_year = 2025"
+    },
+    {
+      "name": "round_sequence",
+      "description": "Validates that the screening round number is a positive integer.",
+      "expression": "screening_round_number >= 1"
+    },
+    {
+      "name": "date_range_valid",
+      "description": "Ensures the screening round start date falls within the 2025 calendar year.",
+      "expression": "screening_round_begin >= '2025-01-01' AND screening_round_begin <= '2025-12-31'"
+    },
+    {
+      "name": "date_chronology",
+      "description": "Ensures the round end date is after or equal to the start date.",
+      "expression": "screening_round_end >= screening_round_begin OR screening_round_end IS NULL"
+    },
+    {
+      "name": "attendance_logic",
+      "description": "Restricts previous attendance values to the allowed set (0, 1, 2, 99).",
+      "expression": "screening_previous_attendance IN (0, 1, 2, 99)"
+    },
+    {
+      "name": "first_round_consistency",
+      "description": "If it is the first round, previous attendance must be 2 (N/A).",
+      "expression": "CASE WHEN screening_round_number = 1 THEN screening_previous_attendance = 2 ELSE TRUE END"
+    },
+    {
+      "name": "history_string_format",
+      "description": "Validates history string containing numeric values followed by true/false labels.",
+      "expression": "screening_history_string::VARCHAR IN ('true', 'false') OR screening_history_string IS NULL"
+    },
+    {
+      "name": "invitation_strict_logic",
+      "description": "Ensures invitation_date exists only for invited persons (1) and is NULL for others (0, 2, 99).",
+      "expression": "CASE WHEN primary_invited = 1 THEN primary_invitation_date IS NOT NULL ELSE primary_invitation_date IS NULL END"
+    },
+    {
+      "name": "exclusion_consistency",
+      "description": "Enforces that protocol-excluded persons (2) must have an attendance status of 2.",
+      "expression": "CASE WHEN primary_invited = 2 THEN primary_test_attended = 2 ELSE TRUE END"
+    },
+    {
+      "name": "attendance_coherence",
+      "description": "Prevents 'Attended=Yes' (1) if the person was not invited (0) or was excluded (2).",
+      "expression": "CASE WHEN primary_invited IN (0, 2) THEN primary_test_attended != 1 ELSE TRUE END"
+    },
+    {
+      "name": "socioeconomic_values",
+      "description": "Validates categorical ranges for education (0-3, 99), income (0-4, 9, 99), and employment (0, 1, 99).",
+      "expression": "education IN (0, 1, 2, 3, 99) AND income IN (0, 1, 2, 3, 4, 9, 99) AND employment_status IN (0, 1, 99)"
+    },
+    {
+      "name": "risk_score_range",
+      "description": "Ensures the numerical preliminary risk score is within the 0 to 100 range.",
+      "expression": "preliminary_risk_score BETWEEN 0 AND 100 OR preliminary_risk_score IS NULL"
+    }
+  ]
+}

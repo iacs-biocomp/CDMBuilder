@@ -1,0 +1,45 @@
+{
+  "description": "Validation rules for the Treatment entity - DuckDB Syntax (No Backslashes)",
+  "rules": [
+    {
+      "name": "round_id_not_null",
+      "description": "The round identifier is required for linking treatment to the screening process.",
+      "expression": "round_id IS NOT NULL"
+    },
+    {
+      "name": "treatment_id_not_null",
+      "description": "Unique identifier for the treatment is mandatory.",
+      "expression": "treatment_id IS NOT NULL"
+    },
+    {
+      "name": "treatment_invited_catalog",
+      "description": "Validates invitation status: 0=false, 1=true, 99=unknown.",
+      "expression": "treatment_invited::VARCHAR IN ('0', '1', '99')"
+    },
+    {
+      "name": "treatment_attended_catalog",
+      "description": "Validates attendance status: 0=false, 1=true.",
+      "expression": "treatment_attended::VARCHAR IN ('0', '1', '99')"
+    },
+    {
+      "name": "treatment_type_catalog",
+      "description": "Validates treatment codes: 1=Endoscopic, 2=Surgery, 3=Chemo, 4=Radio, 5=Combo, 99=Unknown.",
+      "expression": "treatment_type::VARCHAR IN ('1', '2', '3', '4', '5', '99') OR treatment_type IS NULL"
+    },
+    {
+      "name": "treatment_date_format",
+      "description": "Ensures YYYY-MM-DD format using [0-9] to avoid backslash issues. Recommended: can be NULL.",
+      "expression": "treatment_date IS NULL OR regexp_matches(treatment_date::VARCHAR, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$')"
+    },
+    {
+      "name": "treatment_attendance_logic",
+      "description": "If treatment was not attended (0), there should not be a treatment date.",
+      "expression": "CASE WHEN treatment_attended::VARCHAR = '0' THEN treatment_date IS NULL ELSE TRUE END"
+    },
+    {
+      "name": "treatment_complications_check",
+      "description": "Optional variable: can be NULL.",
+      "expression": "treatment_complications IS NULL OR length(treatment_complications::VARCHAR) > 0"
+    }
+  ]
+}

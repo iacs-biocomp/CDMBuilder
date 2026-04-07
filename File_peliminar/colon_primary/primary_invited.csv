@@ -1,0 +1,5 @@
+primary_invited,code
+no,0
+yes,1
+excluded due to planned protocol,2
+unknown,99

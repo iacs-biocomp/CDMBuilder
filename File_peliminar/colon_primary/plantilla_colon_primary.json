@@ -1,0 +1,50 @@
+{
+  "description": "Validation rules for the colon_primary entity - DuckDB Syntax",
+  "rules": [
+    {
+      "name": "primary_id_not_null",
+      "description": "The primary observation identifier is required.",
+      "expression": "primary_id IS NOT NULL"
+    },
+    {
+      "name": "round_id_not_null",
+      "description": "The link to the screening round is required.",
+      "expression": "round_id IS NOT NULL"
+    },
+    {
+      "name": "invitation_attendance_logic",
+      "description": "If a person is excluded from invitation (2), attendance must also be marked as excluded (2).",
+      "expression": "CASE WHEN primary_invited = '2' THEN primary_test_attended = '2' ELSE TRUE END"
+    },
+    {
+      "name": "invitation_date_consistency",
+      "description": "Invitation date should only be present if the person was actually invited (1).",
+      "expression": "CASE WHEN primary_invited IN ('0', '2', '99') THEN primary_invitation_date IS NULL ELSE TRUE END"
+    },
+    {
+      "name": "attendance_date_requirement",
+      "description": "If the test was attended (1), a test date must be recorded.",
+      "expression": "CASE WHEN primary_test_attended = '1' THEN primary_test_date IS NOT NULL ELSE TRUE END"
+    },
+    {
+      "name": "result_factor_hierarchy",
+      "description": "Validates categorical results for FIT/gFOBT (0, 1, 9) or endoscopy (10-19).",
+      "expression": "primary_test_result_factor IN ('0', '1', '9', '10', '11', '12', '13', '14', '15', '16', '19', '99')"
+    },
+    {
+      "name": "numeric_censored_logic",
+      "description": "Validates the censoring indicator (0: below, 1: exact, 2: above threshold).",
+      "expression": "primary_test_result_numeric_censored IN ('0', '1', '2') OR primary_test_result_numeric_censored IS NULL"
+    },
+    {
+      "name": "complications_scope",
+      "description": "Complications should only be filled for endoscopic primary screening.",
+      "expression": "CASE WHEN primary_test_method NOT LIKE '%endoscopy%' AND primary_test_complications IS NOT NULL THEN FALSE ELSE TRUE END"
+    },
+    {
+      "name": "date_chronology_primary",
+      "description": "The test date cannot be earlier than the invitation date.",
+      "expression": "primary_test_date >= primary_invitation_date OR primary_test_date IS NULL OR primary_invitation_date IS NULL"
+    }
+  ]
+}
