@@ -1,0 +1,2154 @@
+{
+  "created_dt": "20260204092602_cdmb",
+  "cdmb_version": "2.0.0",
+  "uuid": "d86645cd-5302-4ee8-805e-fe9f6bb34dc4",
+  "metadata": {
+    "project": "EucanScreen_Colon_Cancer",
+    "funder": "",
+    "url_project": "https://eucanscreen.eu/",
+    "work_package": "WP5 - Monitoring",
+    "use_case": "Common data model for colon cancer screening data data",
+    "document": "",
+    "version_sem": "0.0.1",
+    "authors": [
+      {
+        "name": "Nevala, Aapeli",
+        "affiliation": "CSF",
+        "id": ""
+      },
+      {
+        "name": "Pankakoski, Maiju ",
+        "affiliation": "CSF",
+        "id": ""
+      }
+    ],
+    "keywords": [],
+    "description": "This is a common data model for cervical cancer screening data to produce key quality performance indicators.",
+    "notes": "The overall objective is to improve existing and develop new standards for data sharing and standardisation across countries, to improve monitoring and comparison of screening programs, and to enable cross-border research using screening data.\n\nSpecific objectives are as follows:\n\n1) To assess the ethical, legal and social implications of data sharing;\n\n2) To develop open-source tools that build on top of existing European cancer screening indicators and data platforms, thus enabling monitoring, data sharing and research with both individual level and aggregated data;\n\n3) To support monitoring of cancer screening both nationally and on a European level;\n\n4) To facilitate harmonised collection of cancer screening data across different screening programs;\n\n5) To evaluate possibilities of the European Health Data Space in context of cancer screening.",
+    "spatial_coverage": "",
+    "license": "CC BY-NC-ND 4.0 https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  },
+  "cohort": {
+    "name": "Colon Cancer",
+    "description": "None",
+    "inclusion_criteria": "None",
+    "exclusion_criteria": "None",
+    "beginning_study_period": "2025-01-01",
+    "end_study_period": "2025-12-31",
+    "cohort_definition_inclusion": null,
+    "cohort_definition_exclusion": null
+  },
+  "entities": [
+    {
+      "name": "person",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "person_id",
+          "description": "Unique person identifier",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: person-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "person_id_type",
+          "description": "Defines if the id is linkable accross the screening rounds per person (1) or if the id is just provided to hand out demographic information for single person given single screening round.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "column_name": "code",
+            "filename": "person_id_type.csv"
+          }
+        },
+        {
+          "label": "bi_date",
+          "description": "Birth date of a person",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: person-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "de_date",
+          "description": "Date of death (if exists)",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: death-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "de_cause",
+          "description": "Cause of death (if exists)",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: death-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "column_name": "cause_of_death",
+            "filename": "death_cause_snomed.csv"
+          }
+        },
+        {
+          "label": "bi_country",
+          "description": "Birth country",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "country_iso_3166-1_english.csv",
+            "column_name": "code_alpha3"
+          }
+        },
+        {
+          "label": "ethnicity",
+          "description": "Race of person",
+          "standard_classification": "OHDSI race vocabulary",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: person-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "column_name": "name",
+            "filename": "ethnicity_race.csv"
+          }
+        },
+        {
+          "label": "bi_country_parents",
+          "description": "Birth country of a person's parents",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: not available directly",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "country_iso_3166-1_english.csv",
+            "column_name": "code_alpha3"
+          }
+        },
+        {
+          "label": "sex",
+          "description": "Sex  at the beginning of screening round.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: person-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "sex.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "name": "person_id_not_null",
+          "description": "Ensures the unique person identifier is not null to maintain relational integrity.",
+          "expression": "person_id IS NOT NULL"
+        },
+        {
+          "name": "person_id_type_check",
+          "description": "Validates if the ID is linkable across rounds (1) or round-specific (2).",
+          "expression": "person_id_type IN (1, 2)"
+        },
+        {
+          "name": "sex_values_check",
+          "description": "Restricts sex values to the defined codes: 1 (Men), 2 (Women), or NULL.",
+          "expression": "sex IN (1, 2) OR sex IS NULL"
+        },
+        {
+          "name": "death_consistency",
+          "description": "Ensures that a cause of death (de_cause) cannot exist without a date of death (de_date).",
+          "expression": "CASE WHEN de_cause IS NOT NULL THEN de_date IS NOT NULL ELSE TRUE END"
+        },
+        {
+          "name": "chronological_dates",
+          "description": "Verifies that the date of death is not chronologically earlier than the date of birth.",
+          "expression": "de_date >= bi_date OR de_date IS NULL"
+        },
+        {
+          "name": "age_screening_check",
+          "description": "Ensures the individual was born before the study period began (2025).",
+          "expression": "bi_date < '2025-01-01'"
+        },
+        {
+          "name": "alive_during_study",
+          "description": "Confirms the person was alive during the 2025 study period or has no recorded death date.",
+          "expression": "de_date >= '2025-01-01' OR de_date IS NULL"
+        },
+        {
+          "name": "iso_country_format",
+          "description": "Validates that the birth country follows the ISO-3166-1 alpha-3 code length (3 characters).",
+          "expression": "length(bi_country) = 3 OR bi_country IS NULL"
+        }
+      ],
+      "synthetic_configuration": {
+        "person_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "1000"
+          },
+          "null_percentage": 0
+        },
+        "person_id_type": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:1, 2:1"
+          },
+          "null_percentage": 0
+        },
+        "bi_date": {
+          "dist": "date_range",
+          "params": {
+            "start": "1926-01-01",
+            "end": "2007-12-31"
+          },
+          "null_percentage": 0
+        },
+        "de_date": {
+          "dist": "date_normal",
+          "params": {
+            "mean_date": "2025-07-01",
+            "std_dev_days": "50"
+          },
+          "null_percentage": 50
+        },
+        "de_cause": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "Acute myocardial infarction:1, Pneumonia:1, Congestive heart failure:1, Ischemic stroke:1, Chronic obstructive pulmonary disease (COPD):1, Sepsis:1, Type 2 diabetes mellitus:1, Chronic kidney failure:1, Lung cancer:1, Alzheimer’s disease:1, Essential hypertension:1, Breast cancer:1, Alcoholic liver disease:1, Intracerebral hemorrhage:1, Parkinson’s disease:1, Liver cirrhosis:1, Suicide by intentional self-harm:1, Acute myeloid leukemia:1, Colon cancer:1, Traffic accident:1"
+          },
+          "null_percentage": 30
+        },
+        "bi_country": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "DEU:1, AND:1, AUT:1, BEL:1, DNK:1, SVK:1, SVN:1, ESP:1, EST:1, FIN:1, FRA:1, GRC:1, HUN:1, IRL:1, ITA:1, LVA:1, LIE:1, LTU:1, LUX:1, MLT:1, NOR:1, NLD:1, POL:1, PRT:1, CZE:1, ROU:1, SWE:1, CHE:1, UKR:1"
+          },
+          "null_percentage": 0
+        },
+        "ethnicity": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "African:0, African American:0, Alaska Native:0, American Indian:5, American Indian or Alaska Native:0, Arab:0, Asian:5, Asian Indian:0, Bahamian:0, Bangladeshi:0, Barbadian:0, Bhutanese:0, Black:10, Black or African American:0, Burmese:0, Cambodian:0, Chinese:4, Dominica Islander:0, Dominican:0, European:60, Filipino:0, Haitian:0, Hmong:0, Indonesian:0, Iwo Jiman:0, Jamaican:0, Japanese:2, Korean:0, Laotian:0, Madagascar:0, Malaysian:0, Maldivian:0, Melanesian:0, Micronesian:0, Middle Eastern or North African:10, Native Hawaiian or Other Pacific Islander:0, Nepalese:0, Okinawan:0, Other Pacific Islander:0, Pakistani:2, Polynesian:0, Singaporean:0, Sri Lankan:0, Taiwanese:0, Thai:0, Tobagoan:0, Trinidadian:0, Vietnamese:0, West Indian:0, White:0, Non-white:0, Other Race:0, Unknown:2"
+          },
+          "null_percentage": 0
+        },
+        "bi_country_parents": {
+          "dist": "catalog_link",
+          "params": {
+            "ref_variable": "bi_country"
+          },
+          "null_percentage": 10
+        },
+        "sex": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:1, 2:1"
+          },
+          "null_percentage": 0
+        },
+        "row_count": 1000
+      }
+    },
+    {
+      "name": "screening_round",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "person_id",
+          "description": "ID of a person",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "ID of this particular screening round instance",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "This id is linked to other phases in the screening programme, eg. everything from primary to interval phase.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_year",
+          "description": "Year of the screening round instance",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_specification_id",
+          "description": "ID of a screening round (that gives specifics to that particular screening programme)",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "External ID that can be linked to screening round metadata -- not used yet.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "previous_round_id",
+          "description": "ID (round_id) of the previous screening round instance.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "This id links to the previous screening round instance of the same screening programme, making screening rounds form a chain. If it is not possible to have a link between two screening rounds, can be left empty.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_previous_attendance",
+          "description": "Attendance in the previous screening round.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "screening_previous_attendance.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "screening_round_number",
+          "description": "Ordering number of current screening round, f.ex. 2 for second round.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_history_string",
+          "description": "String of form '00100' indicating zeroes for non-attended round and ones for attended rounds in the past. Leave NA if not known or if only partially known.",
+          "standard_classification": "",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_invitation_type",
+          "description": "Screening setting, organized population-based or opportunistic",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_invitation_type.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "screening_round_begin",
+          "description": "A date, when this screening round is considered to begin.",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "If the person has attended screening, fill in the primary attendance date. If the person has not attended, but invitation date is recorded, fill in the primary invitation date. Otherwise fill in 1.1. of the year when person became eligible to this screening round.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_round_end",
+          "description": "A date, when this screening round is considered to end.",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "The beginning date of the next round, or if not known, x time after the beginning of the screening round.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "education",
+          "description": "No education, primary education, secondary education, higher education",
+          "standard_classification": "SNOMED, ISCED-11",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "education.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "income",
+          "description": "Income level,  at the beginning of screening round.",
+          "standard_classification": "SNOMED (huom. 4 luokkaa vs. 5 in quintiles)",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "Notes: SNOMED-codes for income as clinical finding, probably not relevant",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "income.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "migration_status",
+          "description": "Migration status,  at the beginning of screening round.",
+          "standard_classification": "LOINC",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "migration_status.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "employment_status",
+          "description": "Employment status  at the beginning of screening round.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "employment_status.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "disability_status",
+          "description": "Disability statys  at the beginning of screening round.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "WG-SS is ECIS-desired standard but presumably not a standard OMOP vocabulary.  SNOMED could be better + not a priority",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "citizenship",
+          "description": "Citizenship at the beginning of screening round.",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "country_iso_3166-1_english.csv",
+            "column_name": "code_alpha3"
+          }
+        },
+        {
+          "label": "lgbtiqa_status",
+          "description": "LGBTIQA+status at the beginning of screening round",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "geo_area",
+          "description": "Geographic location, at the beginning of screening round.",
+          "standard_classification": "NUTS/SNOMED/OPEN",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: ?",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "geo_area.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "deprivation_area",
+          "description": "Deprivation area, at the beginning of screening round.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: ?",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "preliminary_risk_score",
+          "description": "Risk score calculated pre-screening round using some external tool.",
+          "standard_classification": "SNOMED",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: measurement",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "preliminary_risk_score_class",
+          "description": "Risk score classified pre-screening round using some external tool.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "some cancer risk classifications exist on SNOMED but maybe not relevant",
+          "possible_data_source": "OMOP: measurement",
+          "observations_comments": "The latest reliable recording of the variable at the instance just before the beginning date of screening round. Typically this can be the value recorded 31.12. of the year preceding the year person became eligible for screening. For example, if the person was invited to screening in 2022, this can be the value recorded 31.12.2021.",
+          "examples": "",
+          "catalog": {
+            "filename": "preliminary_risk_score_class.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_invited",
+          "description": "Indicator for the person being invited to screening during that round.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "mapped as \"does episode primary testing have this element\"",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "Fill in if the person was invited to screening or not. If you have only data on attended persons, this may be left blank. If the person has been excluded from the invitation based on some planned criteria (f.ex.: earlier attendance to opportunistic testing, protocols for surveillance due to history of negative colonoscopy), this should be coded as 2. In this case the person will be properly handled in the calculation of screening and invitation coverages. ",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_invited.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_invitation_date",
+          "description": "Date of invitation for primary test",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "If primary_invited = 2 or 99, this should be left blank.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_attended",
+          "description": "Indicator for person attending the primary test",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "mapped as \"does episode screening_primary have this element\"",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "If primary_invited = 2, this should be 2 as well.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_attended.csv",
+            "column_name": "code"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "name": "screening_year_check",
+          "description": "Ensures the record belongs strictly to the 2025 screening campaign.",
+          "expression": "screening_year = 2025"
+        },
+        {
+          "name": "round_sequence",
+          "description": "Validates that the screening round number is a positive integer.",
+          "expression": "screening_round_number >= 1"
+        },
+        {
+          "name": "date_range_valid",
+          "description": "Ensures the screening round start date falls within the 2025 calendar year.",
+          "expression": "screening_round_begin >= '2025-01-01' AND screening_round_begin <= '2025-12-31'"
+        },
+        {
+          "name": "date_chronology",
+          "description": "Ensures the round end date is after or equal to the start date.",
+          "expression": "screening_round_end >= screening_round_begin OR screening_round_end IS NULL"
+        },
+        {
+          "name": "attendance_logic",
+          "description": "Restricts previous attendance values to the allowed set (0, 1, 2, 99).",
+          "expression": "screening_previous_attendance IN (0, 1, 2, 99)"
+        },
+        {
+          "name": "first_round_consistency",
+          "description": "If it is the first round, previous attendance must be 2 (N/A).",
+          "expression": "CASE WHEN screening_round_number = 1 THEN screening_previous_attendance = 2 ELSE TRUE END"
+        },
+        {
+          "name": "history_string_format",
+          "description": "Validates history string containing numeric values followed by true/false labels.",
+          "expression": "screening_history_string::VARCHAR IN ('true', 'false') OR screening_history_string IS NULL"
+        },
+        {
+          "name": "invitation_strict_logic",
+          "description": "Ensures invitation_date exists only for invited persons (1) and is NULL for others (0, 2, 99).",
+          "expression": "CASE WHEN primary_invited = 1 THEN primary_invitation_date IS NOT NULL ELSE primary_invitation_date IS NULL END"
+        },
+        {
+          "name": "exclusion_consistency",
+          "description": "Enforces that protocol-excluded persons (2) must have an attendance status of 2.",
+          "expression": "CASE WHEN primary_invited = 2 THEN primary_test_attended = 2 ELSE TRUE END"
+        },
+        {
+          "name": "attendance_coherence",
+          "description": "Prevents 'Attended=Yes' (1) if the person was not invited (0) or was excluded (2).",
+          "expression": "CASE WHEN primary_invited IN (0, 2) THEN primary_test_attended != 1 ELSE TRUE END"
+        },
+        {
+          "name": "socioeconomic_values",
+          "description": "Validates categorical ranges for education (0-3, 99), income (0-4, 9, 99), and employment (0, 1, 99).",
+          "expression": "education IN (0, 1, 2, 3, 99) AND income IN (0, 1, 2, 3, 4, 9, 99) AND employment_status IN (0, 1, 99)"
+        },
+        {
+          "name": "risk_score_range",
+          "description": "Ensures the numerical preliminary risk score is within the 0 to 100 range.",
+          "expression": "preliminary_risk_score BETWEEN 0 AND 100 OR preliminary_risk_score IS NULL"
+        }
+      ],
+      "synthetic_configuration": {
+        "person_id": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "person",
+            "target_variable": "person_id"
+          },
+          "null_percentage": 0
+        },
+        "round_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "100"
+          },
+          "null_percentage": 0
+        },
+        "screening_year": {
+          "dist": "constant",
+          "params": {
+            "value": "2025"
+          },
+          "null_percentage": 0
+        },
+        "round_specification_id": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:60, 2:20, 3:20, 4:5, 5:5"
+          },
+          "null_percentage": 0
+        },
+        "previous_round_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "200"
+          },
+          "null_percentage": 90
+        },
+        "screening_previous_attendance": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:40, 1:40, 2:10, 99:10"
+          },
+          "null_percentage": 0
+        },
+        "screening_round_number": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:60, 2:25, 3:10, 4:4, 5:1"
+          },
+          "null_percentage": 0
+        },
+        "screening_history_string": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "True:60, False:40"
+          },
+          "null_percentage": 0
+        },
+        "primary_invitation_type": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:80, 2:20"
+          },
+          "null_percentage": 0
+        },
+        "screening_round_begin": {
+          "dist": "date_range",
+          "params": {
+            "start": "2025-01-01",
+            "end": "2025-12-31"
+          },
+          "null_percentage": 0
+        },
+        "screening_round_end": {
+          "dist": "relative_date",
+          "params": {
+            "ref_variable": "screening_round_begin",
+            "mean": "150",
+            "stdDev": "3",
+            "unit": "days"
+          },
+          "null_percentage": 10
+        },
+        "education": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 99:1"
+          },
+          "null_percentage": 0
+        },
+        "income": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 4:1, 9:1, 99:1"
+          },
+          "null_percentage": 0
+        },
+        "migration_status": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:80, 1:15, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "employment_status": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:80, 1:15, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "disability_status": {
+          "dist": "categorical",
+          "params": {
+            "options": "disability_status"
+          },
+          "null_percentage": 0
+        },
+        "citizenship": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "person",
+            "target_variable": "bi_country"
+          },
+          "null_percentage": 0
+        },
+        "lgbtiqa_status": {
+          "dist": "categorical",
+          "params": {
+            "options": "lgbtiqa_status"
+          },
+          "null_percentage": 0
+        },
+        "geo_area": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:20, 2:60, 3:10, 99:10"
+          },
+          "null_percentage": 0
+        },
+        "deprivation_area": {
+          "dist": "categorical",
+          "params": {
+            "options": "deprivation_area"
+          },
+          "null_percentage": 0
+        },
+        "preliminary_risk_score": {
+          "dist": "uniform",
+          "params": {
+            "min": "0",
+            "max": "100"
+          },
+          "null_percentage": 0
+        },
+        "preliminary_risk_score_class": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 9:1"
+          },
+          "null_percentage": 0
+        },
+        "primary_invited": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:10, 1:80, 2:5, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "primary_invitation_date": {
+          "dist": "random_default",
+          "params": {},
+          "null_percentage": 0
+        },
+        "primary_test_attended": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:10, 1:80, 2:5, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "row_count": 1000
+      }
+    },
+    {
+      "name": "colon_primary",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "primary_id",
+          "description": "None",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "ID that links primary investigation data to a screening round",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Primary-table contains details related to event that is classified as part of primary testing in screening. In CRC screening this is typically either fecal occult blood test or endoscopic examination. NOTE: this is the observation that is the primary test in the protocol, not the first test that can be recorded in the screening system. For example, if your protocol has FIT as a primary test, then FIT has to be the primary test event. If primary phase is explicitly defined in your data model, thi",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_invited",
+          "description": "Indicator for the person being invited to screening during that round.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "Fill in if the person was invited to screening or not. If you have only data on attended persons, this may be left blank. If the person has been excluded from the invitation based on some planned criteria (f.ex.: earlier attendance to opportunistic testing, protocols for surveillance due to history of negative colonoscopy), this should be coded as 2. In this case the person will be properly handled in the calculation of screening and invitation coverages. ",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_invited.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_invitation_date",
+          "description": "Date of invitation for primary test",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation-table",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_screening_reason",
+          "description": "Setting for the primary testing, routine or follow-up",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: episode/measurement",
+          "observations_comments": "Usually 1 in CRC screening.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_screening_reason.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_test_method",
+          "description": "Primary test method applied",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: measurement/procedure",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_method.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_test_attended",
+          "description": "Indicator for person attending the primary test",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "If primary_invited = 2, this should be 2 as well.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_attended.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_test_date",
+          "description": "Date of attending the primary test",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_result_factor",
+          "description": "Primary test result, possible values depend on the primary test.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "For FIT/gFOBT, values 0, 1, 9 are acceptable. For endoscopy-based primary testing other values are accepted. If there are multiple primary FIT/gFOBTs performed, list the most relevant outcome with hierarchy 1 > 0 > 9. Similarly for endoscopy primary testing list only one outcome with hierarchy 13 > 12 > 11 > 10 > 16 > 19.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_result_factor.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_test_result_numeric",
+          "description": "Numeric result of primary test (eg. FIT value)",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "If the test is above or below certain detection limits, provide the minimal/maximal value.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_result_numeric_censored",
+          "description": "Indicator for the test result being censored due to detection limits of the laboratory equipment.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "If the test is below detection threshold, provide 0. If the exact value can be trusted, provide 1. If the test is above maximal detection threshold, provide 2.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_result_numeric_censored.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "primary_test_complications",
+          "description": "Complications in the primary testing phase (typically applicaple only for primary endoscopic screening).",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "Only fill in the case of primary endoscopic screening.",
+          "examples": "",
+          "catalog": {
+            "filename": "primary_test_complications.csv",
+            "column_name": "code"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "name": "primary_id_not_null",
+          "description": "The primary observation identifier is required.",
+          "expression": "primary_id IS NOT NULL"
+        },
+        {
+          "name": "round_id_not_null",
+          "description": "The link to the screening round is required.",
+          "expression": "round_id IS NOT NULL"
+        },
+        {
+          "name": "invitation_attendance_logic",
+          "description": "If a person is excluded from invitation (2), attendance must also be marked as excluded (2).",
+          "expression": "CASE WHEN primary_invited = '2' THEN primary_test_attended = '2' ELSE TRUE END"
+        },
+        {
+          "name": "invitation_date_consistency",
+          "description": "Invitation date should only be present if the person was actually invited (1).",
+          "expression": "CASE WHEN primary_invited IN ('0', '2', '99') THEN primary_invitation_date IS NULL ELSE TRUE END"
+        },
+        {
+          "name": "attendance_date_requirement",
+          "description": "If the test was attended (1), a test date must be recorded.",
+          "expression": "CASE WHEN primary_test_attended = '1' THEN primary_test_date IS NOT NULL ELSE TRUE END"
+        },
+        {
+          "name": "result_factor_hierarchy",
+          "description": "Validates categorical results for FIT/gFOBT (0, 1, 9) or endoscopy (10-19).",
+          "expression": "primary_test_result_factor IN ('0', '1', '9', '10', '11', '12', '13', '14', '15', '16', '19', '99')"
+        },
+        {
+          "name": "numeric_censored_logic",
+          "description": "Validates the censoring indicator (0: below, 1: exact, 2: above threshold).",
+          "expression": "primary_test_result_numeric_censored IN ('0', '1', '2') OR primary_test_result_numeric_censored IS NULL"
+        },
+        {
+          "name": "complications_scope",
+          "description": "Complications should only be filled for endoscopic primary screening.",
+          "expression": "CASE WHEN primary_test_method NOT LIKE '%endoscopy%' AND primary_test_complications IS NOT NULL THEN FALSE ELSE TRUE END"
+        },
+        {
+          "name": "date_chronology_primary",
+          "description": "The test date cannot be earlier than the invitation date.",
+          "expression": "primary_test_date >= primary_invitation_date OR primary_test_date IS NULL OR primary_invitation_date IS NULL"
+        }
+      ],
+      "synthetic_configuration": {
+        "primary_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "1000"
+          },
+          "null_percentage": 0
+        },
+        "round_id": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "screening_round",
+            "target_variable": "round_id"
+          },
+          "null_percentage": 0
+        },
+        "primary_invited": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:40, 1:50, 2:5, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "primary_invitation_date": {
+          "dist": "date_range",
+          "params": {
+            "start": "2025-01-01",
+            "end": "2025-12-31"
+          },
+          "null_percentage": 0
+        },
+        "primary_screening_reason": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:80, 2:15, 99:5"
+          },
+          "null_percentage": 10
+        },
+        "primary_test_method": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:20, 2:20, 3:20, 4:20, 99:20"
+          },
+          "null_percentage": 10
+        },
+        "primary_test_attended": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:40, 1:50, 2:5, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "primary_test_date": {
+          "dist": "relative_date",
+          "params": {
+            "ref_variable": "primary_invitation_date",
+            "mean": "30",
+            "unit": "days",
+            "stdDev": "2"
+          },
+          "null_percentage": 0
+        },
+        "primary_test_result_factor": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 9:1, 10:1, 11:1, 12:1, 13:1, 16:1, 99:1"
+          },
+          "null_percentage": 0
+        },
+        "primary_test_result_numeric": {
+          "dist": "uniform",
+          "params": {
+            "min": "0",
+            "max": "10"
+          },
+          "null_percentage": 10
+        },
+        "primary_test_result_numeric_censored": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:20, 1:60, 2:20"
+          },
+          "null_percentage": 10
+        },
+        "primary_test_complications": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:1, 8:1, 9:1, 10:1, 11:1, 12:1, 13:1, 14:1, 15:1, 16:1, 17:1, 99:1"
+          },
+          "null_percentage": 90
+        },
+        "row_count": 1000
+      }
+    },
+    {
+      "name": "colon_assessment",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "assessment_id",
+          "description": "ID for the assessment.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "ID that links assessment into a screening round",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Assessment-table contains details related to event that is classified as part of further assessment phase of screening. If further assessment phase is explicitly defined in your data model, this is the right table to map those elements. If your data is formed from external data source without explicit definitions for phases, these can be certain events that occur within certain time period after (positive) primary test. For example, all the colonoscopies within 6 months of positive FIT could be ",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_invited",
+          "description": "Indicator for person being invited to assessment test (typically colonoscopy in FIT screening)",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Fill in this field, if the program collects data on the invitation decision from the primary testing phase.For example, this can vary from test-positivity, if people with certain health conditions are not invited to further assessment. If this data is not collected, but only attendance is known, fill in 99. If data is collected but there are cases where person has attended assessment without invitation to assessment, this can be imputed as 1.",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_invited.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_attended",
+          "description": "Indicator for person attending to assessment test (typically colonoscopy in FIT screening)",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Fill in this field, if the person attended further assessment after positive initial test.",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_attended.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_date",
+          "description": "Date of person attending the assessment test (typically colonoscopy in FIT screening)",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Leave blank if the date is missing. ",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_method",
+          "description": "Method of assessment",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: procededure",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_method.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_diagnosis",
+          "description": "Result of the assessment test (typically colonoscopy confirmation).",
+          "standard_classification": "SNOMED/ICD-O-3",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation/measurement",
+          "observations_comments": "Diagnosis based on the further assesment phase. If further assessment and treatment phase diagnosis cannot be separated, fill the eventual screening round diagnosis to this field. Same applies to rest of the variables (stage - operations)",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_diagnosis.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_complications",
+          "description": "Any complications present at the assessment phase (typically colonoscopy).",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_complications.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_phase_cancer_stage",
+          "description": "If assessment result was cancer, the stage or TNM classification of cancer at the assessment stage.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_phase_stage_type",
+          "description": "Type of the recorded stage/TNM in the assessment phase.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": {
+            "filename": "assessment_phase_stage_type.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "assessment_operations",
+          "description": "Operations performed at the assessment phase -- note: can be extended to multiple variables.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: procedure",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "assessment_id_not_null",
+          "description": "Unique identifier for the assessment is mandatory.",
+          "expression": "assessment_id IS NOT NULL"
+        },
+        {
+          "name": "round_id_consistency",
+          "description": "The round_id is required for linking with other screening phases.",
+          "expression": "round_id IS NOT NULL"
+        },
+        {
+          "name": "assessment_invited_catalog",
+          "description": "Validates invitation status: 0=false, 1=true, 99=unknown.",
+          "expression": "assessment_invited::VARCHAR IN ('0', '1', '99')"
+        },
+        {
+          "name": "assessment_attended_catalog",
+          "description": "Validates attendance status: 0=false, 1=true, 99=unknown.",
+          "expression": "assessment_attended::VARCHAR IN ('0', '1', '99')"
+        },
+        {
+          "name": "assessment_method_catalog",
+          "description": "Validates assessment method: 3=Sigmoidoscopy, 4=Colonoscopy, 5=CT-Colonography.",
+          "expression": "assessment_method::VARCHAR IN ('3', '4', '5')"
+        },
+        {
+          "name": "assessment_diagnosis_catalog",
+          "description": "Validates diagnosis codes: 0=No CRC/Adenoma, 1=Small Adenoma, 2=Advanced Adenoma, 3=Cancer, 6=Other, 99=Unknown.",
+          "expression": "assessment_diagnosis::VARCHAR IN ('0', '1', '2', '3', '6', '99')"
+        },
+        {
+          "name": "assessment_complications_catalog",
+          "description": "Validates complications codes (0 to 17) or NULL if not applicable.",
+          "expression": "assessment_complications::VARCHAR IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '99')"
+        },
+        {
+          "name": "assessment_stage_type_catalog",
+          "description": "Validates stage type: 1=TNM, 2=Stage.",
+          "expression": "assessment_phase_stage_type::VARCHAR IN ('1', '2') OR assessment_phase_stage_type IS NULL"
+        },
+        {
+          "name": "attendance_consistency",
+          "description": "Logical check: If attendance is false (0), there should be no assessment date.",
+          "expression": "CASE WHEN assessment_attended::VARCHAR = '0' THEN assessment_date IS NULL ELSE TRUE END"
+        },
+        {
+          "name": "assessment_date_format",
+          "description": "Ensures the date follows the YYYY-MM-DD format if provided.",
+          "expression": "assessment_date IS NULL OR TRY_CAST(assessment_date::VARCHAR AS DATE) IS NOT NULL"
+        },
+        {
+          "name": "cancer_stage_logic",
+          "description": "If a cancer stage is provided, the stage type (TNM or Stage) must be specified.",
+          "expression": "CASE WHEN assessment_phase_cancer_stage IS NOT NULL THEN assessment_phase_stage_type IS NOT NULL ELSE TRUE END"
+        }
+      ],
+      "synthetic_configuration": {
+        "assessment_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "1000"
+          },
+          "null_percentage": 0
+        },
+        "round_id": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "colon_primary",
+            "target_variable": "round_id"
+          },
+          "null_percentage": 0
+        },
+        "assessment_invited": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:25, 1:70, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "assessment_attended": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:25, 1:70, 99:5"
+          },
+          "null_percentage": 0
+        },
+        "assessment_date": {
+          "dist": "date_range",
+          "params": {
+            "start": "2025-01-01",
+            "end": "2025-12-31"
+          },
+          "null_percentage": 10
+        },
+        "assessment_method": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "3:1, 4:1, 5:1"
+          },
+          "null_percentage": 0
+        },
+        "assessment_diagnosis": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 6:1, 99:1"
+          },
+          "null_percentage": 0
+        },
+        "assessment_complications": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:1, 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:1, 8:1, 9:1, 10:1, 11:1, 12:1, 13:1, 14:1, 15:1, 16:1, 17:1, 99:1"
+          },
+          "null_percentage": 0
+        },
+        "assessment_phase_cancer_stage": {
+          "dist": "categorical",
+          "params": {
+            "options": "assessment_phase_cancer_stage"
+          },
+          "null_percentage": 10
+        },
+        "assessment_phase_stage_type": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:1, 2:1"
+          },
+          "null_percentage": 10
+        },
+        "assessment_operations": {
+          "dist": "categorical",
+          "params": {
+            "options": "assessment_operations"
+          },
+          "null_percentage": 10
+        },
+        "row_count": 1000
+      }
+    },
+    {
+      "name": "colon_treatment",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "round_id",
+          "description": "ID that links assessment into a screening round",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_id",
+          "description": "Unique identifier for the treatment ",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_invited",
+          "description": "Indicator for person being invited to treatment after the assessment phase.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: screening_treatment",
+          "observations_comments": "Fill in this field, if the program collects data on the invitation decision from the assessment phase. If this data is not collected, but only attendance is known, fill in 99. If data is collected but there are cases where person has attended assessment without invitation to assessment, this can be imputed as 1. Note: these should be treatments initiated due to cancer screening programme. For example, having a treatment for interval cancer (f.ex. cancer after primary negative test) should not be",
+          "examples": "",
+          "catalog": {
+            "filename": "treatment_invited.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "treatment_attended",
+          "description": "Indicator for person attending the treatment after the assessment phase.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: screening_treatment",
+          "observations_comments": "If data on treatment attendance does not exists, leave this whole table empty.",
+          "examples": "",
+          "catalog": {
+            "filename": "treatment_attended.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "treatment_date",
+          "description": "Date of a person attending the treatment.",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: screening_treatment",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_type",
+          "description": "Treatment the person received after the further assessment phase.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: screening_treatment",
+          "observations_comments": "Note: this only applies to treatments given due to cancer screening. Treatments for, for example, interval cancers should not be recorded here.",
+          "examples": "",
+          "catalog": {
+            "filename": "treatment_type.csv",
+            "column_name": "code"
+          }
+        },
+        {
+          "label": "treatment_complications",
+          "description": "Possible complications from the treatment received, if recorded.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: screening_treatment",
+          "observations_comments": "Note: this only applies to treatments given due to cancer screening. Treatments for, for example, interval cancers should not be recorded here.",
+          "examples": "",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "round_id_not_null",
+          "description": "The round identifier is required for linking treatment to the screening process.",
+          "expression": "round_id IS NOT NULL"
+        },
+        {
+          "name": "treatment_id_not_null",
+          "description": "Unique identifier for the treatment is mandatory.",
+          "expression": "treatment_id IS NOT NULL"
+        },
+        {
+          "name": "treatment_invited_catalog",
+          "description": "Validates invitation status: 0=false, 1=true, 99=unknown.",
+          "expression": "treatment_invited::VARCHAR IN ('0', '1', '99')"
+        },
+        {
+          "name": "treatment_attended_catalog",
+          "description": "Validates attendance status: 0=false, 1=true.",
+          "expression": "treatment_attended::VARCHAR IN ('0', '1', '99')"
+        },
+        {
+          "name": "treatment_type_catalog",
+          "description": "Validates treatment codes: 1=Endoscopic, 2=Surgery, 3=Chemo, 4=Radio, 5=Combo, 99=Unknown.",
+          "expression": "treatment_type::VARCHAR IN ('1', '2', '3', '4', '5', '99') OR treatment_type IS NULL"
+        },
+        {
+          "name": "treatment_date_format",
+          "description": "Ensures YYYY-MM-DD format using [0-9] to avoid backslash issues. Recommended: can be NULL.",
+          "expression": "treatment_date IS NULL OR regexp_matches(treatment_date::VARCHAR, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$')"
+        },
+        {
+          "name": "treatment_attendance_logic",
+          "description": "If treatment was not attended (0), there should not be a treatment date.",
+          "expression": "CASE WHEN treatment_attended::VARCHAR = '0' THEN treatment_date IS NULL ELSE TRUE END"
+        },
+        {
+          "name": "treatment_complications_check",
+          "description": "Optional variable: can be NULL.",
+          "expression": "treatment_complications IS NULL OR length(treatment_complications::VARCHAR) > 0"
+        }
+      ],
+      "synthetic_configuration": {
+        "round_id": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "screening_round",
+            "target_variable": "round_id"
+          },
+          "null_percentage": 0
+        },
+        "treatment_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "1000"
+          },
+          "null_percentage": 0
+        },
+        "treatment_invited": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:20, 1:70, 99:10"
+          },
+          "null_percentage": 0
+        },
+        "treatment_attended": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "0:20, 1:70, 99:10"
+          },
+          "null_percentage": 0
+        },
+        "treatment_date": {
+          "dist": "date_range",
+          "params": {
+            "start": "2025-01-01",
+            "end": "2025-12-31"
+          },
+          "null_percentage": 10
+        },
+        "treatment_type": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "1:1, 2:1, 3:1, 4:1, 5:1, 99:1"
+          },
+          "null_percentage": 10
+        },
+        "treatment_complications": {
+          "dist": "categorical",
+          "params": {
+            "options": "treatment_complications"
+          },
+          "null_percentage": 50
+        },
+        "row_count": 1000
+      }
+    },
+    {
+      "name": "colon_interval",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "round_id",
+          "description": "ID that links assessment into a screening round",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_id",
+          "description": "None",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_exists",
+          "description": "Defines wether interval cancer exists for the person. ",
+          "standard_classification": "",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "Only fill in this data if there is a possibility for monitoring interval cancers. The definition of an interval cancer is open at this stage of JA, but these should be cancers that are not detected due to intensified follow-up due to screening. For example, interval cancer can be a cancer some time after primary-negative.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_dg_date",
+          "description": "Date of diagnosis for interval cancer",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "YYYY-MM-DD",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_diagnosis_topography",
+          "description": "Interval cancer diagnosis, anatomical site",
+          "standard_classification": "ICD-O-3/SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_diagnosis_morphology",
+          "description": "Interval cancer diagnosis, morphology",
+          "standard_classification": "ICD-O-3/SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_diagnosis_factor",
+          "description": "Interval cancer diagnosis, classified to several factors.",
+          "standard_classification": "Some desired classification",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_tnm",
+          "description": "TNM classification of interval cancer",
+          "standard_classification": "NAACCR",
+          "format": "String",
+          "type": "Categorical",
+          "units": "TNM classification",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "OMOP: observation",
+          "observations_comments": "TNM: SNOMED 734320 and children mapped directly to TNM class by their label",
+          "examples": "",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "name": "round_id_not_null",
+          "description": "The round identifier is required to link the interval cancer to a specific screening episode.",
+          "expression": "round_id IS NOT NULL"
+        },
+        {
+          "name": "interval_id_not_null",
+          "description": "Unique identifier for the interval cancer record is mandatory.",
+          "expression": "interval_id IS NOT NULL"
+        },
+        {
+          "name": "interval_cancer_exists_catalog",
+          "description": "Validates the existence flag: FALSE (No), TRUE (Yes).",
+          "expression": "interval_cancer_exists::VARCHAR IN ('true', 'false')"
+        },
+        {
+          "name": "existence_dependency_logic",
+          "description": "Data integrity: If interval_cancer_exists is '0', all clinical details (date, topography, morphology, factor, TNM) must be NULL.",
+          "expression": "CASE WHEN interval_cancer_exists::VARCHAR = '0' THEN interval_cancer_dg_date IS NULL AND interval_cancer_diagnosis_topography IS NULL AND interval_cancer_diagnosis_morphology IS NULL AND interval_cancer_diagnosis_factor IS NULL AND interval_cancer_tnm IS NULL ELSE TRUE END"
+        },
+        {
+          "name": "interval_cancer_date_format",
+          "description": "Ensures the diagnosis date follows YYYY-MM-DD using [0-9] for compatibility.",
+          "expression": "interval_cancer_dg_date IS NULL OR regexp_matches(interval_cancer_dg_date::VARCHAR, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$')"
+        },
+        {
+          "name": "interval_diagnosis_consistency",
+          "description": "Recommended: If cancer exists (1), a diagnosis date should ideally be provided.",
+          "expression": "CASE WHEN interval_cancer_exists::VARCHAR = 'true' THEN interval_cancer_dg_date IS NOT NULL ELSE TRUE END"
+        }
+      ],
+      "synthetic_configuration": {
+        "round_id": {
+          "dist": "foreign_key",
+          "params": {
+            "target_entity": "screening_round",
+            "target_variable": "round_id"
+          },
+          "null_percentage": 0
+        },
+        "interval_id": {
+          "dist": "sequence",
+          "params": {
+            "start": "1000"
+          },
+          "null_percentage": 0
+        },
+        "interval_cancer_exists": {
+          "dist": "categorical_weighted",
+          "params": {
+            "options_weights": "True: 20, False:80"
+          },
+          "null_percentage": 0
+        },
+        "interval_cancer_dg_date": {
+          "dist": "date_range",
+          "params": {
+            "start": "2025-06-01",
+            "end": "2025-12-31"
+          },
+          "null_percentage": 10
+        },
+        "interval_cancer_diagnosis_topography": {
+          "dist": "categorical",
+          "params": {
+            "options": "interval_cancer_diagnosis_topography"
+          },
+          "null_percentage": 50
+        },
+        "interval_cancer_diagnosis_morphology": {
+          "dist": "categorical",
+          "params": {
+            "options": "interval_cancer_diagnosis_morphology"
+          },
+          "null_percentage": 50
+        },
+        "interval_cancer_diagnosis_factor": {
+          "dist": "categorical",
+          "params": {
+            "options": "interval_cancer_diagnosis_factor"
+          },
+          "null_percentage": 10
+        },
+        "interval_cancer_tnm": {
+          "dist": "categorical",
+          "params": {
+            "options": "interval_cancer_tnm"
+          },
+          "null_percentage": 50
+        },
+        "row_count": 1000
+      }
+    }
+  ],
+  "relationships": []
+}

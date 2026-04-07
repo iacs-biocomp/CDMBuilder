@@ -1,0 +1,10 @@
+primary_test_result_factor|code
+negative|0
+positive|1
+inadequate|9
+No CRC or adenomas|10
+small adenomas|11
+advanced adenoma|12
+cancer|13
+other|16
+unknown|99

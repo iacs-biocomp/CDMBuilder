@@ -1,0 +1,85 @@
+erDiagram
+  person {
+    String person_id
+    Integer person_id_type
+    Date bi_date
+    Date de_date
+    String de_cause
+    String bi_country
+    String ethnicity
+    String bi_country_parents
+    Integer sex
+  }
+  screening_round {
+    String person_id
+    String round_id
+    Integer screening_year
+    Integer round_specification_id
+    String previous_round_id
+    String screening_previous_attendance
+    Integer screening_round_number
+    Boolean screening_history_string
+    String primary_invitation_type
+    Date screening_round_begin
+    Date screening_round_end
+    String education
+    String income
+    String migration_status
+    String employment_status
+    String disability_status
+    String citizenship
+    String lgbtiqa_status
+    String geo_area
+    String deprivation_area
+    Integer preliminary_risk_score
+    String preliminary_risk_score_class
+    String primary_invited
+    Date primary_invitation_date
+    String primary_test_attended
+  }
+  colon_primary {
+    String primary_id
+    String round_id
+    String primary_invited
+    Date primary_invitation_date
+    String primary_screening_reason
+    String primary_test_method
+    String primary_test_attended
+    Date primary_test_date
+    String primary_test_result_factor
+    Integer primary_test_result_numeric
+    String primary_test_result_numeric_censored
+    String primary_test_complications
+  }
+  colon_assessment {
+    String assessment_id
+    String round_id
+    String assessment_invited
+    String assessment_attended
+    Date assessment_date
+    String assessment_method
+    String assessment_diagnosis
+    String assessment_complications
+    String assessment_phase_cancer_stage
+    String assessment_phase_stage_type
+    String assessment_operations
+  }
+  colon_treatment {
+    String round_id
+    String treatment_id
+    String treatment_invited
+    String treatment_attended
+    Date treatment_date
+    String treatment_type
+    String treatment_complications
+  }
+  colon_interval {
+    String round_id
+    String interval_id
+    Boolean interval_cancer_exists
+    Date interval_cancer_dg_date
+    String interval_cancer_diagnosis_topography
+    String interval_cancer_diagnosis_morphology
+    String interval_cancer_diagnosis_factor
+    String interval_cancer_tnm
+  }

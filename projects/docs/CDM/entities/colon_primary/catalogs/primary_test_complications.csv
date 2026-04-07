@@ -1,0 +1,20 @@
+primary_test_complications|code
+none|0
+perforations|1
+lower GI bleeding|2
+administration of blood products|3
+paralytic ileus|4
+instestinal obstruction|5
+nausea|6
+vomiting|7
+dehydration|8
+adbdominal pain|9
+anxiety|10
+MI|11
+angina|12
+arrhytmias|13
+CHF|14
+cardiac or respiratory arrest|15
+syncope|16
+hypotension|17
+unknown |99

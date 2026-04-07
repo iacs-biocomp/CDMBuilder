@@ -1,0 +1,17 @@
+{
+    "title": "EucanScreen_Colon_Cancer",
+    "description": "This is a common data model for cervical cancer screening data to produce key quality performance indicators.",
+    "creators": [
+        {
+            "name": "Nevala, Aapeli",
+            "affiliation": "CSF",
+            "orcid": ""
+        },
+        {
+            "name": "Pankakoski, Maiju ",
+            "affiliation": "CSF",
+            "orcid": ""
+        }
+    ],
+    "keywords": []
+}

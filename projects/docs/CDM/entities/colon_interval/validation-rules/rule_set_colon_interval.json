@@ -1,0 +1,35 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "name": "round_id_not_null",
+      "description": "The round identifier is required to link the interval cancer to a specific screening episode.",
+      "expression": "round_id IS NOT NULL"
+    },
+    {
+      "name": "interval_id_not_null",
+      "description": "Unique identifier for the interval cancer record is mandatory.",
+      "expression": "interval_id IS NOT NULL"
+    },
+    {
+      "name": "interval_cancer_exists_catalog",
+      "description": "Validates the existence flag: FALSE (No), TRUE (Yes).",
+      "expression": "interval_cancer_exists::VARCHAR IN ('true', 'false')"
+    },
+    {
+      "name": "existence_dependency_logic",
+      "description": "Data integrity: If interval_cancer_exists is '0', all clinical details (date, topography, morphology, factor, TNM) must be NULL.",
+      "expression": "CASE WHEN interval_cancer_exists::VARCHAR = '0' THEN interval_cancer_dg_date IS NULL AND interval_cancer_diagnosis_topography IS NULL AND interval_cancer_diagnosis_morphology IS NULL AND interval_cancer_diagnosis_factor IS NULL AND interval_cancer_tnm IS NULL ELSE TRUE END"
+    },
+    {
+      "name": "interval_cancer_date_format",
+      "description": "Ensures the diagnosis date follows YYYY-MM-DD using [0-9] for compatibility.",
+      "expression": "interval_cancer_dg_date IS NULL OR regexp_matches(interval_cancer_dg_date::VARCHAR, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$')"
+    },
+    {
+      "name": "interval_diagnosis_consistency",
+      "description": "Recommended: If cancer exists (1), a diagnosis date should ideally be provided.",
+      "expression": "CASE WHEN interval_cancer_exists::VARCHAR = 'true' THEN interval_cancer_dg_date IS NOT NULL ELSE TRUE END"
+    }
+  ]
+}

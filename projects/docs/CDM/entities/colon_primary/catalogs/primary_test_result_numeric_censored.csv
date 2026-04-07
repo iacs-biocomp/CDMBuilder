@@ -1,0 +1,4 @@
+primary_test_result_numeric_censored|code
+Left-censored|0
+not censored|1
+Right-censored|2

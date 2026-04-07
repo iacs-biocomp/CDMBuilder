@@ -1,0 +1,21 @@
+cause_of_death|snomed_ct_code
+Acute myocardial infarction|22298006
+Pneumonia|233604007
+Congestive heart failure|42343007
+Ischemic stroke|422504002
+Chronic obstructive pulmonary disease (COPD)|13645005
+Sepsis|91302008
+Type 2 diabetes mellitus|44054006
+Chronic kidney failure|431855005
+Lung cancer|254637007
+Alzheimer’s disease|26929004
+Essential hypertension|59621000
+Breast cancer|254837009
+Alcoholic liver disease|197321007
+Intracerebral hemorrhage|10378004
+Parkinson’s disease|49049000
+Liver cirrhosis|19943007
+Suicide by intentional self-harm|44301001
+Acute myeloid leukemia|91857000
+Colon cancer|363406005
+Traffic accident|169297000

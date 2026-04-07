@@ -1,0 +1,7 @@
+assessment_diagnosis|code
+No CRC or adenomas|0
+small adenoma|1
+advanced adenoma|2
+cancer|3
+other|6
+unknown|99

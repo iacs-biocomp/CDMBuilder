@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below:"
+title: "EucanScreen_Colon_Cancer"
+version: "0.0.1"
+date-released: "2026-02-04"
+url: "https://eucanscreen.eu/"
+license: "CC BY-NC-ND 4.0 https://creativecommons.org/licenses/by-nc-nd/4.0/"
+authors:
+- family-names: "Nevala"
+  given-names: "Aapeli"
+  orcid: ""
+- family-names: "Pankakoski"
+  given-names: "Maiju"
+  orcid: ""

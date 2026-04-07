@@ -1,0 +1,45 @@
+{
+  "description": "The expressions of the different rules follow the syntax of the SQL OLAP database... (truncated for brevity)",
+  "rules": [
+    {
+      "name": "person_id_not_null",
+      "description": "Ensures the unique person identifier is not null to maintain relational integrity.",
+      "expression": "person_id IS NOT NULL"
+    },
+    {
+      "name": "person_id_type_check",
+      "description": "Validates if the ID is linkable across rounds (1) or round-specific (2).",
+      "expression": "person_id_type IN (1, 2)"
+    },
+    {
+      "name": "sex_values_check",
+      "description": "Restricts sex values to the defined codes: 1 (Men), 2 (Women), or NULL.",
+      "expression": "sex IN (1, 2) OR sex IS NULL"
+    },
+    {
+      "name": "death_consistency",
+      "description": "Ensures that a cause of death (de_cause) cannot exist without a date of death (de_date).",
+      "expression": "CASE WHEN de_cause IS NOT NULL THEN de_date IS NOT NULL ELSE TRUE END"
+    },
+    {
+      "name": "chronological_dates",
+      "description": "Verifies that the date of death is not chronologically earlier than the date of birth.",
+      "expression": "de_date >= bi_date OR de_date IS NULL"
+    },
+    {
+      "name": "age_screening_check",
+      "description": "Ensures the individual was born before the study period began (2025).",
+      "expression": "bi_date < '2025-01-01'"
+    },
+    {
+      "name": "alive_during_study",
+      "description": "Confirms the person was alive during the 2025 study period or has no recorded death date.",
+      "expression": "de_date >= '2025-01-01' OR de_date IS NULL"
+    },
+    {
+      "name": "iso_country_format",
+      "description": "Validates that the birth country follows the ISO-3166-1 alpha-3 code length (3 characters).",
+      "expression": "length(bi_country) = 3 OR bi_country IS NULL"
+    }
+  ]
+}
