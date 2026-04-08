@@ -1,0 +1,1170 @@
+{
+  "created_dt": "20260302073705_cdmb",
+  "cdmb_version": "1.3.7",
+  "uuid": "9dc2132f-d700-42b8-8d5a-8ada4e19962b",
+  "metadata": {
+    "uuid": "f4cd8952-18e2-4730-a272-90fd36dd6ef3",
+    "project": "EUCanScreen_Colon",
+    "funder": "EU4Health programme, Grant Agreement No 101056947",
+    "url_project": "https://www.eucanscreen.eu",
+    "work_package": "WP5",
+    "use_case": "EUCanScreen_Colon",
+    "document": "Task 5.5 pilot pipeline and data model.",
+    "version_sem": "0.1.0",
+    "authors": [
+      {
+        "name": "EUCanScreen Consortium",
+        "affiliation": "EUCanScreen",
+        "id": ""
+      }
+    ],
+    "keywords": [
+      "cancer screening",
+      "colon",
+      "common data model",
+      "CanScreen-ECIS"
+    ],
+    "description": "EUCanScreen Common Data Model configuration for Colon cancer screening",
+    "notes": "Generated from Colon CDM Excel specification",
+    "spatial_coverage": "Europe",
+    "license": "CC BY 4.0 https://creativecommons.org/licenses/by/4.0/"
+  },
+  "cohort": {
+    "name": "EUCanScreen_Colon_cohort",
+    "description": "EUCanScreen Colon cancer screening cohort",
+    "inclusion_criteria": "Individuals in target population for colon cancer screening",
+    "exclusion_criteria": "",
+    "beggining_study_period": "2020-01-01",
+    "end_study_period": "2025-12-31",
+    "cohort_definition_inclusion": null,
+    "cohort_definition_exclusion": null
+  },
+  "entities": [
+    {
+      "uuid": "c0338aa9-59a8-4857-8313-e7c21d0e736f",
+      "name": "person",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "person_id",
+          "description": "Pseudonymised unique person identifier linking all screening rounds.",
+          "standard_classification": "integer",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id); Missing: Must not be missing, if person-table exists. Provides linkage between screening observations.",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "person_id_type",
+          "description": "Whether the person ID links all screening rounds (1) or is round-specific (0).",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1 = person-specific, 2 = round-specific",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "bi_date",
+          "description": "Birth date of a person",
+          "standard_classification": "YYYY-MM-DD",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "de_date",
+          "description": "Date of death (if exists)",
+          "standard_classification": "YYYY-MM-DD",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "de_cause",
+          "description": "Cause of death coded by ICD-10.",
+          "standard_classification": "ICD-10",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: ICD-10 code; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "icd10.csv"
+          }
+        },
+        {
+          "label": "bi_country",
+          "description": "Birth country",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: ISO-3166-1; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "country_iso 3166-1.csv"
+          }
+        },
+        {
+          "label": "bi_country_parents",
+          "description": "Birth country of a person's parents",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: ISO-3166-1; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "country_iso 3166-1.csv"
+          }
+        },
+        {
+          "label": "sex",
+          "description": "Sex  at the beginning of screening round.",
+          "standard_classification": "Gender",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = men, 1 = women; Missing: Leave as NA if missing",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "sex.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "expression": "bi_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "bi_date",
+          "description": "Date range validation for bi_date"
+        },
+        {
+          "expression": "de_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "de_date",
+          "description": "Date range validation for de_date"
+        }
+      ]
+    },
+    {
+      "uuid": "0a73d273-9c43-478a-b34a-0d36aad81a22",
+      "name": "screening_round",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "person_id",
+          "description": "ID of a person",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "ID of this screening round instance, linked to all phases (primary to interval).",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_year",
+          "description": "Year of the screening round instance",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "age_at_screening",
+          "description": "Age of the person at the start of the screening round (years).",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "years",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 50–74; Missing: Must not be missing",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_specification_id",
+          "description": "External ID linking to screening round metadata; not yet used.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "previous_round_id",
+          "description": "round_id of the previous screening round, forming a chain. Leave empty if not linkable.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_previous_attendance",
+          "description": "Attendance in the previous screening round.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = no, 1 = yes, 2 = first round/not applicable, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "screening_previous_attendance.csv"
+          }
+        },
+        {
+          "label": "screening_round_number",
+          "description": "Ordering number of current screening round, f.ex. 2 for second round.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_history_string",
+          "description": "Binary string (e.g. '00100') marking attended (1) and non-attended (0) past rounds.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = not attended, 1 = attended",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_invitation_type",
+          "description": "Screening setting, organized population-based or opportunistic",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1 = organized (invitational population-based), 2 = opportunistic (outside invitational)",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_invitation_type.csv"
+          }
+        },
+        {
+          "label": "screening_round_begin",
+          "description": "Start of screening round: primary attendance, invitation, or Jan 1 of eligibility year.",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "screening_round_end",
+          "description": "End of screening round: start of next round or fixed offset from round start.",
+          "standard_classification": "",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD; Missing: Data type",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "education",
+          "description": "Education level at screening round start (latest recording before round begins).",
+          "standard_classification": "SNOMED, ISCED-11",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = No education, 1 = primary education, 2 =  secondary education, 3 = higher education, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "education_level.csv"
+          }
+        },
+        {
+          "label": "income",
+          "description": "Income level at screening round start (latest recording before round begins).",
+          "standard_classification": "SNOMED (huom. 4 luokkaa vs. 5 in quintiles)",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = very low, 1 = low,  2= medium, 3 = high, 4 = very high, 9 = missing, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "income.csv"
+          }
+        },
+        {
+          "label": "migration_status",
+          "description": "Migration status at screening round start (latest recording before round begins).",
+          "standard_classification": "LOINC",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = non-migrant, 1 = migrant, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "migrant_status.csv"
+          }
+        },
+        {
+          "label": "employment_status",
+          "description": "Employment status at screening round start (latest recording before round begins).",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = unemployed, 1 = employed, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "employment_status.csv"
+          }
+        },
+        {
+          "label": "citizenship",
+          "description": "Citizenship at screening round start (latest recording before round begins).",
+          "standard_classification": "ISO-3166-1/SNOMED/OSM",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "country_iso 3166-1.csv"
+          }
+        },
+        {
+          "label": "geo_area",
+          "description": "Geographic location at screening round start (latest recording before round begins).",
+          "standard_classification": "NUTS/SNOMED/OPEN",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1 = rural, 2 = city, 3 = town/suburb, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "geo_area.csv"
+          }
+        },
+        {
+          "label": "preliminary_risk_score",
+          "description": "Pre-screening risk score calculated by an external tool at screening round start.",
+          "standard_classification": "SNOMED",
+          "format": "Double",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0-100; Missing: Leave empty",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "preliminary_risk_score_class",
+          "description": "Pre-screening risk classification by an external tool at screening round start.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Optional",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = low, 1 = medium, 2 = high, 3 = very high, 9 = missing, not evaluated, 99 = unknown; Missing: Leave empty",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "preliminary_risk_score_class.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "expression": "screening_year BETWEEN 2005 AND 2025",
+          "name": "screening_year",
+          "description": "Year range validation for screening_year"
+        },
+        {
+          "expression": "age_at_screening BETWEEN 50 AND 74",
+          "name": "age_at_screening",
+          "description": "Screening age must be between 50 and 74"
+        },
+        {
+          "expression": "screening_round_number >= 0",
+          "name": "screening_round_number",
+          "description": "Non-negative validation for screening_round_number"
+        },
+        {
+          "expression": "screening_round_begin BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "screening_round_begin",
+          "description": "Date range validation for screening_round_begin"
+        },
+        {
+          "expression": "screening_round_end BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "screening_round_end",
+          "description": "Date range validation for screening_round_end"
+        }
+      ]
+    },
+    {
+      "uuid": "bc20fc60-df8c-4a73-a77d-f4e9568b727e",
+      "name": "colon_primary",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "primary_id",
+          "description": "primary_id",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (ID)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "round_id linking primary test data to a screening round (FIT, gFOBT, or endoscopy).",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (ID)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_invited",
+          "description": "Indicator: person invited to screening (1=yes, 0=no, 2=excluded, blank=unknown).",
+          "standard_classification": "true/false",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = no, 1 = yes, 2 = excluded due to planned protocol, 99 = unknown",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_invitation_date",
+          "description": "Date of invitation for primary test. If primary_invited = 2 or 99, this should be left blank.",
+          "standard_classification": "yyyy-mm-dd",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: yyyy-mm-dd",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_screening_reason",
+          "description": "Setting for the primary testing, routine or follow-up. Usually 1 in CRC screening.",
+          "standard_classification": "custom factor",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1 = routine, 2 = follow-up, 99 = unknown / not applicable.",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_screening_reason.csv"
+          }
+        },
+        {
+          "label": "primary_test_method",
+          "description": "Primary test method applied",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1 = FIT, 2 = gFOBT, 3 = flexible sigmoidoscopy, 4 = total colonoscopy, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_test_method.csv"
+          }
+        },
+        {
+          "label": "primary_test_attended",
+          "description": "Indicator for person attending the primary test. If primary_invited = 2, this should be 2 as well.",
+          "standard_classification": "boolean",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = no, 1 = yes, 2 = excluded due to planned protocol, 99 = unknown",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_date",
+          "description": "Date of attending the primary test",
+          "standard_classification": "yyyy-mm-dd",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: yyyy-mm-dd",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_result_factor",
+          "description": "Primary test result; for FIT/gFOBT: 0/1/9; for endoscopy: other values accepted.",
+          "standard_classification": "boolean",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = negative, 1=positive, 9 = inadequate, 10 = No CRC or adenomas, 11 = small adenoma, 12 = advanced adenoma, 13 = cancer, 16 = other, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_test_result_factor.csv"
+          }
+        },
+        {
+          "label": "primary_test_result_numeric",
+          "description": "Numeric primary test result (e.g. FIT value); use min/max at detection limits.",
+          "standard_classification": "numeric",
+          "format": "Double",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: numeric",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "primary_test_result_numeric_censored",
+          "description": "Censoring indicator: 0=below detection limit, 1=exact value, 2=above limit.",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = left-censored, 1 = not censored, 2 = right-censored",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_test_result_numeric_censored.csv"
+          }
+        },
+        {
+          "label": "primary_test_complications",
+          "description": "Complications in primary testing phase; applicable for primary endoscopic screening.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = none, 1 = perforations, 2 = lower GI bleeding, 3 = administration of blood products, 4 = paralytic ileus, 5 = intestinal obstruction, 6 = nausea, 7 = vomiting, 8 = dehydration, 9 = abdominal pain, 10 = anxiety, 11 = MI, 12 = angina, 13 = arrhytmias, 14 = CHF, 15 = cardiac or respiratory arrest, 16 = syncope, 17 = hypotension, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "primary_test_complications.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "expression": "primary_test_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "primary_test_date",
+          "description": "Date range validation for primary_test_date"
+        }
+      ]
+    },
+    {
+      "uuid": "182a1b77-51f1-44ff-b87f-6d2dcd55b758",
+      "name": "colon_assessment",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "assessment_id",
+          "description": "ID for the assessment.",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "round_id",
+          "description": "round_id linking assessment data to a screening round (e.g. colonoscopy after FIT+).",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_invited",
+          "description": "Indicator: person invited to assessment (colonoscopy); 99 if only attendance known.",
+          "standard_classification": "boolean/SNOMED",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = false, 1 = true, 99 = unknown/missing",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_attended",
+          "description": "Indicator for attending assessment test (typically colonoscopy after positive FIT).",
+          "standard_classification": "boolean",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = false, 1 = true, 99 = unknown/missing",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_date",
+          "description": "Date of assessment test attendance (typically colonoscopy). Leave blank if missing.",
+          "standard_classification": "YYYY-MM-DD",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "assessment_method",
+          "description": "Method of assessment",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 3 = flexible sigmoidscopy, 4 = total colonoscopy, 5 = CT-Colonography",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "assessment_method.csv"
+          }
+        },
+        {
+          "label": "assessment_diagnosis",
+          "description": "Diagnosis from the assessment phase; if inseparable from treatment, use final diagnosis.",
+          "standard_classification": "SNOMED/ICD-O-3",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = No CRC or adenomas, 1 = small adenoma, 2 = advanced adenoma, 3 = cancer, 6 = other, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "assessment_diagnosis.csv"
+          }
+        },
+        {
+          "label": "assessment_complications",
+          "description": "Complications at the assessment phase (typically colonoscopy), matching assessment_method.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = none, 1 = perforations, 2 = lower GI bleeding, 3 = administration of blood products, 4 = paralytic ileus, 5 = intestinal obstruction, 6 = nausea, 7 = vomiting, 8 = dehydration, 9 = abdominal pain, 10 = anxiety, 11 = MI, 12 = angina, 13 = arrhytmias, 14 = CHF, 15 = cardiac or respiratory arrest, 16 = syncope, 17 = hypotension",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "assessment_complications.csv"
+          }
+        },
+        {
+          "label": "assessment_phase_cancer_stage",
+          "description": "If assessment result was cancer, the stage or TNM classification of cancer at the assessment stage.",
+          "standard_classification": "Cancer Modifier",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: TNM or Stage 1-4",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "assessment_phase_cancer_stage.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "expression": "assessment_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "assessment_date",
+          "description": "Date range validation for assessment_date"
+        }
+      ]
+    },
+    {
+      "uuid": "7618c37b-6588-4863-9866-c2a0bab1a4af",
+      "name": "colon_treatment",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "round_id",
+          "description": "ID that links assessment into a screening round",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_id",
+          "description": "Unique identifier for the treatment",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_invited",
+          "description": "Indicator: person invited to treatment after assessment. Fill 99 if only attendance known.",
+          "standard_classification": "boolean",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = false, 1 = true, 99 = unknown/missing",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "treatment_invited.csv"
+          }
+        },
+        {
+          "label": "treatment_attended",
+          "description": "Indicator for attending treatment after assessment. Leave table empty if no attendance data.",
+          "standard_classification": "boolean",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = false, 1 = true",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_date",
+          "description": "Date of a person attending the treatment.",
+          "standard_classification": "yyyy-mm-dd",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: YYYY-MM-DD",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "treatment_type",
+          "description": "Treatment received after assessment phase; screening-related treatments only.",
+          "standard_classification": "SNOMED",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": true,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 1=endoscopic removal, 2 = surgery, 3=chemotherapy, 4=radiotherapy, 5=combinations of therapy, 99 = unknown",
+          "examples": "",
+          "catalog": {
+            "column_name": "id",
+            "filename": "treatment_type.csv"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "expression": "treatment_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "treatment_date",
+          "description": "Date range validation for treatment_date"
+        }
+      ]
+    },
+    {
+      "uuid": "e039110e-2154-4d9d-bd9c-3e13befd25f5",
+      "name": "colon_interval",
+      "time_varying": false,
+      "variables": [
+        {
+          "label": "round_id",
+          "description": "ID that links assessment into a screening round",
+          "standard_classification": "",
+          "format": "Integer",
+          "type": "Numerical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_id",
+          "description": "interval_id",
+          "standard_classification": "",
+          "format": "String",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Required",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: integer (id)",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_exists",
+          "description": "Whether interval cancer exists; fill only if monitoring is possible (cancer after negative screen).",
+          "standard_classification": "boolean",
+          "format": "Boolean",
+          "type": "Categorical",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: 0 = no, 1 = yes",
+          "examples": "",
+          "catalog": null
+        },
+        {
+          "label": "interval_cancer_dg_date",
+          "description": "Date of diagnosis for interval cancer",
+          "standard_classification": "YYYY-MM-DD",
+          "format": "Date",
+          "type": "Date",
+          "units": "",
+          "requirement_level": "Recommended",
+          "characteristic": "Observed",
+          "catalog_bl": false,
+          "transformations_from_origin": "",
+          "possible_data_source": "",
+          "observations_comments": "Values: yyy-mm-dd",
+          "examples": "",
+          "catalog": null
+        }
+      ],
+      "rules": [
+        {
+          "expression": "interval_cancer_dg_date BETWEEN ''2000-01-01'' AND ''2030-12-31''",
+          "name": "interval_cancer_dg_date",
+          "description": "Date range validation for interval_cancer_dg_date"
+        }
+      ]
+    }
+  ],
+  "relationships": []
+}
