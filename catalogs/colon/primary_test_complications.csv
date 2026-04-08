@@ -1,0 +1,20 @@
+id;primary_test_complications_category
+0;none
+1;perforations
+2;lower GI bleeding
+3;administration of blood products
+4;paralytic ileus
+5;intestinal obstruction
+6;nausea
+7;vomiting
+8;dehydration
+9;abdominal pain
+10;anxiety
+11;MI
+12;angina
+13;arrhythmias
+14;CHF
+15;cardiac or respiratory arrest
+16;syncope
+17;hypotension
+99;other

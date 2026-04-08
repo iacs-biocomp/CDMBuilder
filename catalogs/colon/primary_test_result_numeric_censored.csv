@@ -1,0 +1,5 @@
+id;primary_test_result_numeric_censored_category
+0;left-censored
+1;not censored
+2;right-censored
+99;unknown

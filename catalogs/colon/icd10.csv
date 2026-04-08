@@ -1,0 +1,88 @@
+id;de_cause_category
+C18;Malignant neoplasm of colon
+C18.0;Malignant neoplasm of caecum
+C18.1;Malignant neoplasm of appendix
+C18.2;Malignant neoplasm of ascending colon
+C18.3;Malignant neoplasm of hepatic flexure
+C18.4;Malignant neoplasm of transverse colon
+C18.5;Malignant neoplasm of splenic flexure
+C18.6;Malignant neoplasm of descending colon
+C18.7;Malignant neoplasm of sigmoid colon
+C18.8;Overlapping malignant lesion of colon
+C18.9;Malignant neoplasm of colon, unspecified
+C19;Malignant neoplasm of rectosigmoid junction
+C20;Malignant neoplasm of rectum
+C21;Malignant neoplasm of anus and anal canal
+C21.0;Malignant neoplasm of anus, unspecified
+C21.1;Malignant neoplasm of anal canal
+C21.2;Malignant neoplasm of cloacogenic zone
+C21.8;Overlapping malignant lesion of rectum, anus and anal canal
+D01.0;Carcinoma in situ of colon
+D01.1;Carcinoma in situ of rectosigmoid junction
+D01.2;Carcinoma in situ of rectum
+D01.3;Carcinoma in situ of anus and anal canal
+D12;Benign neoplasm of colon, rectum, anus and anal canal
+D12.0;Benign neoplasm of caecum
+D12.1;Benign neoplasm of appendix
+D12.2;Benign neoplasm of ascending colon
+D12.3;Benign neoplasm of transverse colon
+D12.4;Benign neoplasm of descending colon
+D12.5;Benign neoplasm of sigmoid colon
+D12.6;Benign neoplasm of colon, unspecified
+D12.7;Benign neoplasm of rectosigmoid junction
+D12.8;Benign neoplasm of rectum
+D12.9;Benign neoplasm of anus and anal canal
+C15;Malignant neoplasm of oesophagus
+C16;Malignant neoplasm of stomach
+C17;Malignant neoplasm of small intestine
+C22;Malignant neoplasm of liver and intrahepatic bile ducts
+C23;Malignant neoplasm of gallbladder
+C24;Malignant neoplasm of other and unspecified parts of biliary tract
+C25;Malignant neoplasm of pancreas
+C26;Malignant neoplasm of other and ill-defined digestive organs
+C34;Malignant neoplasm of bronchus and lung
+C43;Malignant melanoma of skin
+C44;Other malignant neoplasms of skin
+C50;Malignant neoplasm of breast
+C53;Malignant neoplasm of cervix uteri
+C54;Malignant neoplasm of corpus uteri
+C56;Malignant neoplasm of ovary
+C61;Malignant neoplasm of prostate
+C64;Malignant neoplasm of kidney
+C67;Malignant neoplasm of bladder
+C71;Malignant neoplasm of brain
+C80;Malignant neoplasm, primary site unknown
+C81;Hodgkin lymphoma
+C82;Follicular lymphoma
+C83;Non-follicular lymphoma
+C84;Mature T/NK-cell lymphomas
+C85;Other and unspecified types of non-Hodgkin lymphoma
+C90;Multiple myeloma and malignant plasma cell neoplasms
+C91;Lymphoid leukaemia
+C92;Myeloid leukaemia
+C95;Leukaemia of unspecified cell type
+I10;Essential hypertension
+I21;Acute myocardial infarction
+I22;Subsequent myocardial infarction
+I25;Chronic ischaemic heart disease
+I46;Cardiac arrest
+I48;Atrial fibrillation and flutter
+I50;Heart failure
+I60;Subarachnoid haemorrhage
+I61;Intracerebral haemorrhage
+I63;Cerebral infarction
+I64;Stroke, not specified as haemorrhage or infarction
+I70;Atherosclerosis
+J18;Pneumonia, unspecified organism
+J44;Other chronic obstructive pulmonary disease
+J45;Asthma
+J96;Respiratory failure, not elsewhere classified
+E11;Type 2 diabetes mellitus
+G30;Alzheimer disease
+K70;Alcoholic liver disease
+K74;Fibrosis and cirrhosis of liver
+N18;Chronic kidney disease
+R99;Other ill-defined and unspecified causes of mortality
+V99;Transport accident, unspecified
+W19;Unspecified fall
+X84;Intentional self-harm by unspecified means

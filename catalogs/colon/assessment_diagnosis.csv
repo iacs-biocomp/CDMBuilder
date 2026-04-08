@@ -1,0 +1,7 @@
+id;assessment_diagnosis_category
+0;No CRC or adenomas
+1;small adenoma
+2;advanced adenoma
+3;cancer
+6;other
+99;unknown

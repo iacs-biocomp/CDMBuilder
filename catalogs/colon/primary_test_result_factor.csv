@@ -1,0 +1,10 @@
+id;primary_test_result_factor_category
+0;negative
+1;positive
+9;inadequate
+10;No CRC or adenomas
+11;small adenoma
+12;advanced adenoma
+13;cancer
+16;other
+19;unknown
